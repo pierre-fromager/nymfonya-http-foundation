@@ -4,10 +4,10 @@ namespace Tests\Component\Http;
 
 use PHPUnit\Framework\TestCase as PFT;
 use Nymfonya\Component\Http\Kernel;
-use App\Component\Config;
-use App\Component\Container;
+use Nymfonya\Component\Config;
+use Nymfonya\Component\Container;
 use Nymfonya\Component\Http\Middleware;
-use App\Middlewares\After;
+use Tests\Middlewares\After;
 
 /**
  * @covers \Nymfonya\Component\Http\Middleware::<public>
@@ -15,8 +15,9 @@ use App\Middlewares\After;
 class MiddlewareTest extends PFT
 {
 
-    const TEST_ENABLE = false;
-    const CONFIG_PATH = '/../../../config/';
+    const TEST_ENABLE = true;
+    const CONFIG_PATH = '/../../../tests/config/';
+    const KERNEL_PATH =  '/../';
 
 
     /**
@@ -55,7 +56,10 @@ class MiddlewareTest extends PFT
         );
         $serviceConfig = $this->config->getSettings(Config::_SERVICES);
         $this->container = new Container($serviceConfig);
-        $kernel = new Kernel(Config::ENV_CLI, basename(self::CONFIG_PATH));
+        $kernel = new Kernel(
+            Config::ENV_CLI,
+            __DIR__ . self::KERNEL_PATH
+        );
         $this->container->setService(Kernel::class, $kernel);
         $this->instance = new Middleware();
     }

@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase as PFT;
 use Nymfonya\Component\Http\Headers;
 
 /**
- * @covers \Nymfonya\Component\Http\Header::<public>
+ * @covers \Nymfonya\Component\Http\Headers::<public>
  */
 class HeadersTest extends PFT
 {

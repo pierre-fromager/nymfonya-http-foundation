@@ -3,7 +3,7 @@
 namespace Nymfonya\Component\Http\Interfaces\Middleware;
 
 use \Closure;
-use App\Component\Container;
+use Nymfonya\Component\Container;
 
 interface ILayer
 {

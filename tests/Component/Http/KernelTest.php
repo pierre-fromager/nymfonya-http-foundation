@@ -3,8 +3,8 @@
 namespace Tests\Component\Http;
 
 use PHPUnit\Framework\TestCase as PFT;
-use App\Component\Config;
-use App\Component\Container;
+use Nymfonya\Component\Config;
+use Nymfonya\Component\Container;
 use Nymfonya\Component\Http\Request;
 use Nymfonya\Component\Http\Response;
 use Nymfonya\Component\Http\Router;
@@ -17,9 +17,9 @@ class KernelTest extends PFT
 {
 
     const TEST_ENABLE = true;
-    const CONFIG_PATH = '/../../../config/';
-    const KERNEL_PATH = '/../../../src/';
-    const KERNEL_NS = '\\App\\Controllers\\';
+    const CONFIG_PATH = '/../../../tests/config/';
+    const KERNEL_PATH =  '/../';
+    const KERNEL_NS = '\\Tests\\Controllers\\';
     const CTRL_ACT = ['config', 'help'];
     const CTRL_ACTIONS = [
         'swaggerdoc', 'false', 'preflight', 'help', 'account', 'keygen'
@@ -53,6 +53,7 @@ class KernelTest extends PFT
             __DIR__ . self::KERNEL_PATH
         );
         $this->instance->setNameSpace(self::KERNEL_NS);
+        //var_dump($this->instance->get)
     }
 
     /**

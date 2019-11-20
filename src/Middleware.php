@@ -3,11 +3,11 @@
 namespace Nymfonya\Component\Http;
 
 use Closure;
-use App\Component\Container;
+use Nymfonya\Component\Container;
 use Nymfonya\Component\Http\Interfaces\Middleware\ILayer;
 
 /**
- * App\Component\Http\Middleware
+ * Nymfonya\Component\Http\Middleware
  *
  * is a copy/paste from onion team.
  *
