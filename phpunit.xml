@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="vendor/autoload.php" stopOnFailure="true" colors="true" strict="true">
+    <testsuites>
+        <testsuite name="all">
+            <file>tests/Component/Http/RequestTest.php</file>
+            <file>tests/Component/Http/CookieTest.php</file>
+            <file>tests/Component/Http/ResponseTest.php</file>
+            <file>tests/Component/Http/HeadersTest.php</file>
+            <file>tests/Component/Http/RouteTest.php</file>
+            <file>tests/Component/Http/RoutesTest.php</file>
+            <file>tests/Component/Http/RouterTest.php</file>
+            <file>tests/Component/Http/MiddlewareTest.php</file>
+            <file>tests/Component/Http/SessionTest.php</file>
+            <file>tests/Component/Http/KernelTest.php</file>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory suffix=".php">src/Interfaces</directory>
+                <file>./src/index.php</file>
+            </exclude>
+        </whitelist>
+        <blacklist>
+            <directory suffix=".php">./vendor</directory>
+        </blacklist>
+    </filter>
+</phpunit>
