@@ -2,8 +2,8 @@
 
 namespace Nymfonya\Component\Http;
 
-use Nymfonya\Component\Http\Interfaces\RequestInterface;
 use Nymfonya\Component\Http\Interfaces\HeadersInterface;
+use Nymfonya\Component\Http\Interfaces\RequestInterface;
 use Nymfonya\Component\Http\Session;
 
 class Request extends Session implements RequestInterface
@@ -77,7 +77,7 @@ class Request extends Session implements RequestInterface
     /**
      * returns http param for a given key
      *
-     * @return array
+     * @return string
      */
     public function getParam(string $key): string
     {

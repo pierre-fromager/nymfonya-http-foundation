@@ -52,7 +52,7 @@ interface RequestInterface
     /**
      * returns http param for a given key
      *
-     * @return array
+     * @return string
      */
     public function getParam(string $key): string;
 

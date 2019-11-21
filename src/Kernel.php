@@ -2,9 +2,9 @@
 
 namespace Nymfonya\Component\Http;
 
+use Nymfonya\Component\Http\Headers;
 use Nymfonya\Component\Http\Interfaces\KernelInterface;
 use Nymfonya\Component\Http\Response;
-use Nymfonya\Component\Http\Headers;
 
 class Kernel implements KernelInterface
 {

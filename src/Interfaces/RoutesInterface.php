@@ -2,8 +2,6 @@
 
 namespace Nymfonya\Component\Http\Interfaces;
 
-use Nymfonya\Component\Http\Routes;
-
 interface RoutesInterface
 {
     /**
