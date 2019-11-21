@@ -36,9 +36,9 @@ class Cookie implements CookieInterface
      * @param string $name
      * @param string $value
      * @param integer $ttl
-     * @return Cookie
+     * @return CookieInterface
      */
-    public function setCookie(string $name, string $value, int $ttl): Cookie
+    public function setCookie(string $name, string $value, int $ttl): CookieInterface
     {
         setcookie($name, $value, time() + $ttl);
         return $this->refreshCookie();
@@ -47,9 +47,9 @@ class Cookie implements CookieInterface
     /**
      * refresh cookie from global
      *
-     * @return Cookie
+     * @return CookieInterface
      */
-    protected function refreshCookie(): Cookie
+    protected function refreshCookie(): CookieInterface
     {
         $this->cookie = $_COOKIE;
         return $this;

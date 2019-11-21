@@ -17,7 +17,7 @@ class Headers implements HeadersInterface
     /**
      * instanciate
      *
-     * @return Headers
+     * @return HeadersInterface
      */
     public function __construct()
     {
@@ -29,9 +29,9 @@ class Headers implements HeadersInterface
      *
      * @param string $key
      * @param string $content
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function add(string $key, string $content): Headers
+    public function add(string $key, string $content): HeadersInterface
     {
         $this->headers[$key] = $content;
         return $this;
@@ -42,9 +42,9 @@ class Headers implements HeadersInterface
      * and returns Headers instance
      *
      * @param array $headers
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function addMany(array $headers): Headers
+    public function addMany(array $headers): HeadersInterface
     {
         foreach ($headers as $k => $v) {
             $this->add($k, $v);
@@ -58,9 +58,9 @@ class Headers implements HeadersInterface
      * and returns Headers instance
      *
      * @param string $key
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function remove(string $key): Headers
+    public function remove(string $key): HeadersInterface
     {
         if (isset($this->headers[$key])) {
             unset($this->headers[$key]);
@@ -97,9 +97,9 @@ class Headers implements HeadersInterface
     /**
      * send headers and returns Headers instance
      *
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function send(): Headers
+    public function send(): HeadersInterface
     {
         $headers = $this->getRaw();
         $headersCount = count($headers);

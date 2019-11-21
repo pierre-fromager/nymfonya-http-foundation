@@ -24,25 +24,25 @@ interface HeadersInterface
     /**
      * add one header formaly done with given key and content
      *
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function add(string $key, string $content): Headers;
+    public function add(string $key, string $content): HeadersInterface;
 
     /**
      * add multiples headers from assoc array and returns Headers instance
      *
      * @param array $headers
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function addMany(array $headers): Headers;
+    public function addMany(array $headers): HeadersInterface;
 
     /**
      * remove one header from his key and returns Headers instance
      *
      * @param string $key
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function remove(string $key): Headers;
+    public function remove(string $key): HeadersInterface;
 
     /**
      * returns all headers as assoc array
@@ -61,7 +61,7 @@ interface HeadersInterface
     /**
      * send headers and returns Headers instance
      *
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function send(): Headers;
+    public function send(): HeadersInterface;
 }
