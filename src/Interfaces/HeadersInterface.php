@@ -4,7 +4,7 @@ namespace Nymfonya\Component\Http\Interfaces;
 
 use Nymfonya\Component\Http\Headers;
 
-interface IHeaders
+interface HeadersInterface
 {
 
     const CONTENT_TYPE = 'Content-Type';
@@ -24,7 +24,7 @@ interface IHeaders
     /**
      * add one header formaly done with given key and content
      *
-     * @return string
+     * @return Headers
      */
     public function add(string $key, string $content): Headers;
 

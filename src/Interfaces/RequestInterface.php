@@ -2,7 +2,7 @@
 
 namespace Nymfonya\Component\Http\Interfaces;
 
-interface IRequest
+interface RequestInterface
 {
 
     const _CLI = 'cli';

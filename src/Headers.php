@@ -2,9 +2,9 @@
 
 namespace Nymfonya\Component\Http;
 
-use Nymfonya\Component\Http\Interfaces\IHeaders;
+use Nymfonya\Component\Http\Interfaces\HeadersInterface;
 
-class Headers implements IHeaders
+class Headers implements HeadersInterface
 {
 
     /**

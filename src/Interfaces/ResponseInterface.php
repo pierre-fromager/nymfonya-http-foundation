@@ -4,9 +4,9 @@ namespace Nymfonya\Component\Http\Interfaces;
 
 use Nymfonya\Component\Http\Response;
 use Nymfonya\Component\Http\Headers;
-use Nymfonya\Component\Http\Interfaces\IStatus;
+use Nymfonya\Component\Http\Interfaces\StatusInterface;
 
-interface IResponse extends IStatus
+interface ResponseInterface extends StatusInterface
 {
 
     const _CLI = 'cli';

@@ -2,10 +2,10 @@
 
 namespace Nymfonya\Component\Http;
 
-use Nymfonya\Component\Http\Interfaces\IResponse;
+use Nymfonya\Component\Http\Interfaces\ResponseInterface;
 use Nymfonya\Component\Http\Headers;
 
-class Response implements IResponse
+class Response implements ResponseInterface
 {
 
     /**

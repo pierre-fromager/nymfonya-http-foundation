@@ -2,11 +2,11 @@
 
 namespace Nymfonya\Component\Http;
 
-use Nymfonya\Component\Http\Interfaces\IRequest;
-use Nymfonya\Component\Http\Interfaces\IHeaders;
+use Nymfonya\Component\Http\Interfaces\RequestInterface;
+use Nymfonya\Component\Http\Interfaces\HeadersInterface;
 use Nymfonya\Component\Http\Session;
 
-class Request extends Session implements IRequest
+class Request extends Session implements RequestInterface
 {
 
     protected $server;
@@ -155,8 +155,8 @@ class Request extends Session implements IRequest
     public function getAcceptEncoding(): string
     {
         $headers = $this->getHeaders();
-        return isset($headers[IHeaders::ACCEPT_ENCODING])
-            ? $headers[IHeaders::ACCEPT_ENCODING]
+        return isset($headers[HeadersInterface::ACCEPT_ENCODING])
+            ? $headers[HeadersInterface::ACCEPT_ENCODING]
             : '';
     }
 
@@ -290,7 +290,7 @@ class Request extends Session implements IRequest
     protected function setContentType(string $contentType = ''): Request
     {
         $this->contentType = (empty($contentType))
-            ? $this->getServer(IHeaders::CONTENT_TYPE)
+            ? $this->getServer(HeadersInterface::CONTENT_TYPE)
             : $contentType;
         return $this;
     }

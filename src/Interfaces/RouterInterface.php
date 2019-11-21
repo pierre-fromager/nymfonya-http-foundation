@@ -2,11 +2,12 @@
 
 namespace Nymfonya\Component\Http\Interfaces;
 
-use Nymfonya\Component\Http\Interfaces\IRequest;
-use Nymfonya\Component\Http\Interfaces\IRoutes;
+use Nymfonya\Component\Http\Interfaces\RequestInterface;
+use Nymfonya\Component\Http\Interfaces\RoutesInterface;
+use Nymfonya\Component\Http\Interfaces\RouteInterface;
 use Nymfonya\Component\Http\Router;
 
-interface IRouter
+interface RouterInterface
 {
     const URI_SEPARATOR = '/';
     const REQUEST_URI = 'REQUEST_URI';
@@ -14,18 +15,18 @@ interface IRouter
     /**
      * instanciate
      *
-     * @param array $routes
-     * @param IRequest $request
+     * @param RoutesInterface $routes
+     * @param RequestInterface $request
      */
-    public function __construct(IRoutes $routes, IRequest $request);
+    public function __construct(RoutesInterface $routes, RequestInterface $request);
 
     /**
      * assign routes to router
      *
-     * @param IRoutes $routes
+     * @param RoutesInterface $routes
      * @return Router
      */
-    public function setRoutes(IRoutes $routes): Router;
+    public function setRoutes(RoutesInterface $routes): Router;
 
     /**
      * compiles routes
@@ -44,9 +45,11 @@ interface IRouter
     /**
      * set params from slugs
      *
+     * @param RouteInterface $route
+     * @param array $matches
      * @return Router
      */
-    public function setParams(IRoute $route, array $matches): Router;
+    public function setParams(RouteInterface $route, array $matches): Router;
 
     /**
      * return matching regexp pattern

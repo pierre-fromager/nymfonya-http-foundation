@@ -2,12 +2,12 @@
 
 namespace Nymfonya\Component\Http;
 
-use Nymfonya\Component\Http\Interfaces\IRoutes;
-use Nymfonya\Component\Http\Interfaces\IRoute;
-use Nymfonya\Component\Http\Interfaces\IRequest;
-use Nymfonya\Component\Http\Interfaces\IRouter;
+use Nymfonya\Component\Http\Interfaces\RoutesInterface;
+use Nymfonya\Component\Http\Interfaces\RouteInterface;
+use Nymfonya\Component\Http\Interfaces\RequestInterface;
+use Nymfonya\Component\Http\Interfaces\RouterInterface;
 
-class Router implements IRouter
+class Router implements RouterInterface
 {
     /**
      * active route
@@ -19,14 +19,14 @@ class Router implements IRouter
     /**
      * routes collection
      *
-     * @var Route[]
+     * @var RouteInterface[]
      */
     private $routes;
 
     /**
      * request
      *
-     * @var IRequest
+     * @var RequestInterface
      */
     private $request = null;
 
@@ -47,10 +47,10 @@ class Router implements IRouter
     /**
      * instanciate
      *
-     * @param array $configRoutes
-     * @param IRequest $request
+     * @param RoutesInterface $routes
+     * @param RequestInterface $request
      */
-    public function __construct(IRoutes $routes, IRequest $request)
+    public function __construct(RoutesInterface $routes, RequestInterface $request)
     {
         $this->routes = $routes->get();
         $this->request = $request;
@@ -64,10 +64,10 @@ class Router implements IRouter
     /**
      * set routes
      *
-     * @param IRoutes $routes
+     * @param RoutesInterface $routes
      * @return Router
      */
-    public function setRoutes(IRoutes $routes): Router
+    public function setRoutes(RoutesInterface $routes): Router
     {
         $this->routes = $routes->get();
         return $this;
@@ -110,9 +110,11 @@ class Router implements IRouter
     /**
      * set params from slugs
      *
+     * @param RouteInterface $route
+     * @param array $matches
      * @return Router
      */
-    public function setParams(IRoute $route, array $matches): Router
+    public function setParams(RouteInterface $route, array $matches): Router
     {
         $slugs = $route->getSlugs();
         $slugCount = count($slugs);

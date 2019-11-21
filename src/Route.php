@@ -2,9 +2,9 @@
 
 namespace Nymfonya\Component\Http;
 
-use Nymfonya\Component\Http\Interfaces\IRoute;
+use Nymfonya\Component\Http\Interfaces\RouteInterface;
 
-class Route implements IRoute
+class Route implements RouteInterface
 {
 
     /**

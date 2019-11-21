@@ -2,9 +2,9 @@
 
 namespace Nymfonya\Component\Http;
 
-use Nymfonya\Component\Http\Interfaces\ICookie;
+use Nymfonya\Component\Http\Interfaces\CookieInterface;
 
-class Cookie implements ICookie
+class Cookie implements CookieInterface
 {
 
     protected $cookie;

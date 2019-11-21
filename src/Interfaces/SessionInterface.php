@@ -4,7 +4,7 @@ namespace Nymfonya\Component\Http\Interfaces;
 
 use Nymfonya\Component\Http\Session;
 
-interface ISession
+interface SessionInterface
 {
 
     /**

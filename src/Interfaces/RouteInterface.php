@@ -2,7 +2,7 @@
 
 namespace Nymfonya\Component\Http\Interfaces;
 
-interface IRoute
+interface RouteInterface
 {
     /**
      * instanciate

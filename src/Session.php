@@ -3,9 +3,9 @@
 namespace Nymfonya\Component\Http;
 
 use Nymfonya\Component\Http\Cookie;
-use Nymfonya\Component\Http\Interfaces\ISession;
+use Nymfonya\Component\Http\Interfaces\SessionInterface;
 
-class Session extends Cookie implements ISession
+class Session extends Cookie implements SessionInterface
 {
 
     protected $session;
