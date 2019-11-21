@@ -3,8 +3,8 @@
 namespace Nymfonya\Component\Http\Interfaces;
 
 use Nymfonya\Component\Http\Interfaces\RequestInterface;
-use Nymfonya\Component\Http\Interfaces\RoutesInterface;
 use Nymfonya\Component\Http\Interfaces\RouteInterface;
+use Nymfonya\Component\Http\Interfaces\RoutesInterface;
 
 interface RouterInterface
 {
@@ -47,7 +47,7 @@ interface RouterInterface
      *
      * @param RouteInterface $route
      * @param array $matches
-     * @return RouRouterInterfaceter
+     * @return RouterInterface
      */
     public function setParams(RouteInterface $route, array $matches): RouterInterface;
 
