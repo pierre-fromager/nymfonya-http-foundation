@@ -2,20 +2,24 @@
 
 namespace Nymfonya\Component\Http;
 
+use Nymfonya\Component\Http\Interfaces\KernelInterface;
 use Nymfonya\Component\Http\Response;
 use Nymfonya\Component\Http\Headers;
 
-class Kernel
+class Kernel implements KernelInterface
 {
 
     const PATH_CONFIG = '/../config/';
 
     use \Nymfonya\Component\Http\Reuse\TKernel;
 
-    /**
-     * instanciate
-     * @return Kernel
-     */
+     /**
+      * instanciate
+      *
+      * @param string $env
+      * @param string $path
+      * @return Kernel
+      */
     public function __construct(string $env, string $path)
     {
         $this->init($env, $path);
@@ -26,9 +30,9 @@ class Kernel
      * set controller namespace
      *
      * @param string $ctrlNamespace
-     * @return Kernel
+     * @return KernelInterface
      */
-    public function setNameSpace(string $ctrlNamespace): Kernel
+    public function setNameSpace(string $ctrlNamespace): KernelInterface
     {
         $this->spacename = $ctrlNamespace;
         return $this;
@@ -48,9 +52,9 @@ class Kernel
      * run app
      *
      * @param array $groups
-     * @return Kernel
+     * @return KernelInterface
      */
-    public function run(array $groups = []): Kernel
+    public function run(array $groups = []): KernelInterface
     {
         $routerGroups = (empty($groups))
             ? $this->router->compile()
@@ -86,9 +90,9 @@ class Kernel
     /**
      * dispatch response
      *
-     * @return Kernel
+     * @return KernelInterface
      */
-    public function send(): Kernel
+    public function send(): KernelInterface
     {
         if ($this->getError()) {
             $this->res
