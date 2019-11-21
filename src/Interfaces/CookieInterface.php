@@ -2,8 +2,6 @@
 
 namespace Nymfonya\Component\Http\Interfaces;
 
-use Nymfonya\Component\Http\Cookie;
-
 interface CookieInterface
 {
 

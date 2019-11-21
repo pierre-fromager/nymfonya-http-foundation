@@ -25,7 +25,6 @@ class Request extends Session implements RequestInterface
     /**
      * instanciate
      *
-     * @return Request
      */
     public function __construct()
     {
@@ -41,6 +40,7 @@ class Request extends Session implements RequestInterface
         $this->setParams();
         parent::__construct();
         $this->setHeaders();
+        return $this;
     }
 
     /**
@@ -48,7 +48,7 @@ class Request extends Session implements RequestInterface
      *
      * @return Headers
      */
-    public function getHeaderManager(): Headers
+    public function getHeaderManager(): HeadersInterface
     {
         return $this->headerManager;
     }
@@ -175,9 +175,9 @@ class Request extends Session implements RequestInterface
     /**
      * return request headers
      *
-     * @return Request
+     * @return RequestInterface
      */
-    protected function setHeaders(): Request
+    protected function setHeaders(): RequestInterface
     {
         $this->headerManager->addMany(
             $this->isCli ? [] : getallheaders()
@@ -248,9 +248,9 @@ class Request extends Session implements RequestInterface
      * essentially for testing purposes
      *
      * @param string $method
-     * @return Request
+     * @return RequestInterface
      */
-    protected function setMethod(string $method): Request
+    protected function setMethod(string $method): RequestInterface
     {
         $this->method = $method;
         return $this;
@@ -261,9 +261,9 @@ class Request extends Session implements RequestInterface
      * essentially for testing purposes
      *
      * @param boolean $isCli
-     * @return Request
+     * @return RequestInterface
      */
-    protected function setIsCli(bool $isCli): Request
+    protected function setIsCli(bool $isCli): RequestInterface
     {
         $this->isCli = $isCli;
         if (false === $this->isCli()) {
@@ -287,9 +287,9 @@ class Request extends Session implements RequestInterface
      * set content type
      *
      * @param string $contentType
-     * @return Request
+     * @return RequestInterface
      */
-    protected function setContentType(string $contentType = ''): Request
+    protected function setContentType(string $contentType = ''): RequestInterface
     {
         $this->contentType = (empty($contentType))
             ? $this->getServer(HeadersInterface::CONTENT_TYPE)
@@ -318,9 +318,9 @@ class Request extends Session implements RequestInterface
      *
      * @param string $key
      * @param string $value
-     * @return Request
+     * @return RequestInterface
      */
-    protected function setParam(string $key, string $value): Request
+    protected function setParam(string $key, string $value): RequestInterface
     {
         $this->params[$key] = $value;
         return $this;
@@ -330,9 +330,9 @@ class Request extends Session implements RequestInterface
      * set http params
      *
      * @param array $params
-     * @return Request
+     * @return RequestInterface
      */
-    protected function setParams(array $params = []): Request
+    protected function setParams(array $params = []): RequestInterface
     {
         if (!empty($params)) {
             $this->params = $params;

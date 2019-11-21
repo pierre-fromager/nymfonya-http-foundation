@@ -10,11 +10,12 @@ interface RoutesInterface
      * instanciate
      *
      * @param array $routes
+     * @return RoutesInterface
      */
     public function __construct(array $routes);
 
     /**
-     * Undocumented function
+     * get routes
      *
      * @return array
      */
@@ -24,7 +25,7 @@ interface RoutesInterface
      * set routes from array
      *
      * @param array $routes
-     * @return Routes
+     * @return RoutesInterface
      */
-    public function set(array $routes): Routes;
+    public function set(array $routes): RoutesInterface;
 }

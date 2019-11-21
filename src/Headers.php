@@ -17,7 +17,6 @@ class Headers implements HeadersInterface
     /**
      * instanciate
      *
-     * @return HeadersInterface
      */
     public function __construct()
     {

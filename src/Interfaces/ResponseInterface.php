@@ -2,8 +2,7 @@
 
 namespace Nymfonya\Component\Http\Interfaces;
 
-use Nymfonya\Component\Http\Response;
-use Nymfonya\Component\Http\Headers;
+use Nymfonya\Component\Http\Interfaces\HeadersInterface;
 use Nymfonya\Component\Http\Interfaces\StatusInterface;
 
 interface ResponseInterface extends StatusInterface
@@ -18,17 +17,17 @@ interface ResponseInterface extends StatusInterface
     /**
      * returns header manager
      *
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function getHeaderManager(): Headers;
+    public function getHeaderManager(): HeadersInterface;
 
     /**
      * set response content
      *
      * @param mixed $content
-     * @return Response
+     * @return ResponseInterface
      */
-    public function setContent($content): Response;
+    public function setContent($content): ResponseInterface;
 
     /**
      * return content string
@@ -41,9 +40,9 @@ interface ResponseInterface extends StatusInterface
      * set http code response
      *
      * @param integer $code
-     * @return Response
+     * @return ResponseInterface
      */
-    public function setCode(int $code): Response;
+    public function setCode(int $code): ResponseInterface;
 
     /**
      * return http code response
@@ -55,7 +54,7 @@ interface ResponseInterface extends StatusInterface
     /**
      * send response content to output
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function send(): Response;
+    public function send(): ResponseInterface;
 }

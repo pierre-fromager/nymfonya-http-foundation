@@ -2,8 +2,6 @@
 
 namespace Nymfonya\Component\Http\Interfaces;
 
-use Nymfonya\Component\Http\Headers;
-
 interface HeadersInterface
 {
 
@@ -18,6 +16,8 @@ interface HeadersInterface
 
     /**
      * instanciate
+     *
+     * @return HeadersInterface
      */
     public function __construct();
 

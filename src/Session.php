@@ -13,21 +13,21 @@ class Session extends Cookie implements SessionInterface
     /**
      * instanciate
      *
-     * @return Session
      */
     public function __construct()
     {
         $this->session = &$_SESSION;
         parent::__construct();
+        return $this;
     }
 
     /**
      * start a session with a session name
      *
      * @param string $sessionName
-     * @return Session
+     * @return SessionInterface
      */
-    public function startSession(string $sessionName): Session
+    public function startSession(string $sessionName): SessionInterface
     {
         $isActive = session_status() === PHP_SESSION_ACTIVE ? true : false;
         if (!$isActive) {
@@ -43,8 +43,9 @@ class Session extends Cookie implements SessionInterface
      * @param string $name
      * @param mixed $value
      * @param string $key
+     * @return SessionInterface
      */
-    public function setSession(string $name, $value, $key = ''): Session
+    public function setSession(string $name, $value, $key = ''): SessionInterface
     {
         if ($key) {
             if (!$this->hasSession($name, $key) || !is_array($this->session[$name])) {
@@ -62,8 +63,9 @@ class Session extends Cookie implements SessionInterface
      *
      * @param string $name
      * @param string $key
+     * @return SessionInterface
      */
-    public function deleteSession(string $name, string $key = ''): Session
+    public function deleteSession(string $name, string $key = ''): SessionInterface
     {
         if ($key) {
             unset($this->session[$name][$key]);

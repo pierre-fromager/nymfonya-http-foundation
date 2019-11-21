@@ -5,7 +5,6 @@ namespace Nymfonya\Component\Http\Interfaces;
 use Nymfonya\Component\Http\Interfaces\RequestInterface;
 use Nymfonya\Component\Http\Interfaces\RoutesInterface;
 use Nymfonya\Component\Http\Interfaces\RouteInterface;
-use Nymfonya\Component\Http\Router;
 
 interface RouterInterface
 {
@@ -17,6 +16,7 @@ interface RouterInterface
      *
      * @param RoutesInterface $routes
      * @param RequestInterface $request
+     * @return RouterInterface
      */
     public function __construct(RoutesInterface $routes, RequestInterface $request);
 
@@ -24,9 +24,9 @@ interface RouterInterface
      * assign routes to router
      *
      * @param RoutesInterface $routes
-     * @return Router
+     * @return RouterInterface
      */
-    public function setRoutes(RoutesInterface $routes): Router;
+    public function setRoutes(RoutesInterface $routes): RouterInterface;
 
     /**
      * compiles routes
@@ -47,9 +47,9 @@ interface RouterInterface
      *
      * @param RouteInterface $route
      * @param array $matches
-     * @return Router
+     * @return RouRouterInterfaceter
      */
-    public function setParams(RouteInterface $route, array $matches): Router;
+    public function setParams(RouteInterface $route, array $matches): RouterInterface;
 
     /**
      * return matching regexp pattern

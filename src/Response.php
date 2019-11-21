@@ -3,6 +3,7 @@
 namespace Nymfonya\Component\Http;
 
 use Nymfonya\Component\Http\Interfaces\ResponseInterface;
+use Nymfonya\Component\Http\Interfaces\HeadersInterface;
 use Nymfonya\Component\Http\Headers;
 
 class Response implements ResponseInterface
@@ -39,7 +40,6 @@ class Response implements ResponseInterface
     /**
      * instanciate
      *
-     * @return Response
      */
     public function __construct()
     {
@@ -48,14 +48,15 @@ class Response implements ResponseInterface
         $this->content = '';
         $sapiName = php_sapi_name();
         $this->setIsCli($sapiName == self::_CLI || $sapiName == self::_CLID);
+        return $this;
     }
 
     /**
      * returns header manager
      *
-     * @return Headers
+     * @return HeadersInterface
      */
-    public function getHeaderManager(): Headers
+    public function getHeaderManager(): HeadersInterface
     {
         return $this->headerManager;
     }
@@ -64,9 +65,9 @@ class Response implements ResponseInterface
      * set response content
      *
      * @param mixed $content
-     * @return Response
+     * @return ResponseInterface
      */
-    public function setContent($content): Response
+    public function setContent($content): ResponseInterface
     {
         $this->content = (is_string($content))
             ? $content
@@ -92,9 +93,9 @@ class Response implements ResponseInterface
      * set http code response
      *
      * @param integer $code
-     * @return Response
+     * @return ResponseInterface
      */
-    public function setCode(int $code): Response
+    public function setCode(int $code): ResponseInterface
     {
         $this->code = $code;
         return $this;
@@ -113,9 +114,9 @@ class Response implements ResponseInterface
     /**
      * send response content to output
      *
-     * @return Response
+     * @return ResponseInterface
      */
-    public function send(): Response
+    public function send(): ResponseInterface
     {
         if ($this->isCli) {
             echo $this->content;
@@ -132,9 +133,9 @@ class Response implements ResponseInterface
      * essentially for testing purposes
      *
      * @param boolean $isCli
-     * @return Response
+     * @return ResponseInterface
      */
-    protected function setIsCli(bool $isCli): Response
+    protected function setIsCli(bool $isCli): ResponseInterface
     {
         $this->isCli = $isCli;
         return $this;

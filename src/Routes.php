@@ -19,7 +19,6 @@ class Routes implements RoutesInterface
      * __construct
      *
      * @param array $routesConfig
-     * @return Routes
      */
     public function __construct(array $routesConfig = [])
     {
@@ -33,9 +32,9 @@ class Routes implements RoutesInterface
      * set routes as array and stack Route collection
      *
      * @param array $routesConfig
-     * @return Routes
+     * @return RoutesInterface
      */
-    public function set(array $routesConfig): Routes
+    public function set(array $routesConfig): RoutesInterface
     {
         $this->routes = [];
         $this->prepare($routesConfig);
@@ -73,9 +72,9 @@ class Routes implements RoutesInterface
      * stacks routes as Route object collection from routes config
      *
      * @param array $routesConfig
-     * @return Routes
+     * @return RoutesInterface
      */
-    protected function prepare(array $routesConfig): Routes
+    protected function prepare(array $routesConfig): RoutesInterface
     {
         $count = count($routesConfig);
         for ($c = 0; $c < $count; $c++) {

@@ -49,7 +49,6 @@ class Router implements RouterInterface
      *
      * @param RoutesInterface $routes
      * @param RequestInterface $request
-     * @return Router
      */
     public function __construct(RoutesInterface $routes, RequestInterface $request)
     {
@@ -66,9 +65,9 @@ class Router implements RouterInterface
      * set routes
      *
      * @param RoutesInterface $routes
-     * @return Router
+     * @return RouterInterface
      */
-    public function setRoutes(RoutesInterface $routes): Router
+    public function setRoutes(RoutesInterface $routes): RouterInterface
     {
         $this->routes = $routes->get();
         return $this;
@@ -113,9 +112,9 @@ class Router implements RouterInterface
      *
      * @param RouteInterface $route
      * @param array $matches
-     * @return Router
+     * @return RouterInterface
      */
-    public function setParams(RouteInterface $route, array $matches): Router
+    public function setParams(RouteInterface $route, array $matches): RouterInterface
     {
         $slugs = $route->getSlugs();
         $slugCount = count($slugs);

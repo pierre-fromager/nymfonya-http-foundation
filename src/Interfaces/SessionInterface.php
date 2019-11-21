@@ -2,8 +2,6 @@
 
 namespace Nymfonya\Component\Http\Interfaces;
 
-use Nymfonya\Component\Http\Session;
-
 interface SessionInterface
 {
 
@@ -11,9 +9,9 @@ interface SessionInterface
      * start a session with a session name
      *
      * @param string $sessionName
-     * @return Session
+     * @return SessionInterface
      */
-    public function startSession(string $sessionName): Session;
+    public function startSession(string $sessionName): SessionInterface;
 
     /**
      * set name value in session for a given key
@@ -21,16 +19,18 @@ interface SessionInterface
      * @param string $name
      * @param mixed $value
      * @param string $key
+     * @return SessionInterface
      */
-    public function setSession(string $name, $value, $key = ''): Session;
+    public function setSession(string $name, $value, $key = ''): SessionInterface;
 
     /**
      * remove a session entry name for a given key
      *
      * @param string $name
      * @param string $key
+     * @return SessionInterface
      */
-    public function deleteSession(string $name, string $key = ''): Session;
+    public function deleteSession(string $name, string $key = ''): SessionInterface;
 
     /**
      * return true if a session name/key entry exists

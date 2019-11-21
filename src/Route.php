@@ -32,7 +32,6 @@ class Route implements RouteInterface
      * instanciate
      *
      * @param string $routeItem
-     * @return Route
      */
     public function __construct(string $routeItem)
     {
@@ -49,6 +48,7 @@ class Route implements RouteInterface
         } else {
             $this->expr = $routeItem;
         }
+        return $this;
     }
 
     /**
