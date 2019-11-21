@@ -17,7 +17,6 @@ class Session extends Cookie implements SessionInterface
     {
         $this->session = &$_SESSION;
         parent::__construct();
-        return $this;
     }
 
     /**

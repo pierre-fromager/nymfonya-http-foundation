@@ -8,7 +8,6 @@ interface RoutesInterface
      * instanciate
      *
      * @param array $routes
-     * @return void
      */
     public function __construct(array $routes);
 

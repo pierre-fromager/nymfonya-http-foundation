@@ -8,7 +8,6 @@ interface CookieInterface
     /**
      * instanciate
      *
-     * @return void
      */
     public function __construct();
 

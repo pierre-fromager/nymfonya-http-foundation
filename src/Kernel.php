@@ -57,7 +57,7 @@ class Kernel implements KernelInterface
         $routerGroups = (empty($groups))
             ? $this->router->compile()
             : $groups;
-        if ($routerGroups) {
+        if (!empty($routerGroups)) {
             $this->setClassname($routerGroups);
             if (class_exists($this->className)) {
                 $this->setController();

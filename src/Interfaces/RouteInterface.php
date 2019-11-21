@@ -9,7 +9,6 @@ interface RouteInterface
      * instanciate
      *
      * @param string $routeItem
-     * @return void
      */
     public function __construct(string $routeItem);
 

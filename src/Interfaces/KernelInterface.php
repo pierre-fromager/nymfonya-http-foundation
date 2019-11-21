@@ -9,7 +9,6 @@ interface KernelInterface
      *
      * @param string $env
      * @param string $path
-     * @return void
      */
     public function __construct(string $env, string $path);
 
