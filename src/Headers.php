@@ -21,6 +21,7 @@ class Headers implements HeadersInterface
     public function __construct()
     {
         $this->headers = [];
+        return $this;
     }
 
     /**

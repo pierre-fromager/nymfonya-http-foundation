@@ -14,12 +14,12 @@ class Kernel
 
     /**
      * instanciate
-     *
      * @return Kernel
      */
     public function __construct(string $env, string $path)
     {
         $this->init($env, $path);
+        return $this;
     }
 
     /**
@@ -47,7 +47,7 @@ class Kernel
     /**
      * run app
      *
-     * @param array $routerGroups
+     * @param array $groups
      * @return Kernel
      */
     public function run(array $groups = []): Kernel
