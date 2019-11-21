@@ -84,7 +84,7 @@ class Route implements RouteInterface
      * return parsed slugs as string collection
      *
      * @param string $rawSlug
-     * @return array
+     * @return String[]
      */
     protected function parsedSlugs(string $rawSlug): array
     {

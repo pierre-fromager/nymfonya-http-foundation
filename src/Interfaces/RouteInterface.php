@@ -29,7 +29,7 @@ interface RouteInterface
     /**
      * return slugs
      *
-     * @return string
+     * @return String[]
      */
     public function getSlugs(): array;
 }
