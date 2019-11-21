@@ -25,7 +25,6 @@ class Routes implements RoutesInterface
         if (!empty($routesConfig)) {
             $this->set($routesConfig);
         }
-        return $this;
     }
 
     /**

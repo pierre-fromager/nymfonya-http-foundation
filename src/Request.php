@@ -40,7 +40,6 @@ class Request extends Session implements RequestInterface
         $this->setParams();
         parent::__construct();
         $this->setHeaders();
-        return $this;
     }
 
     /**

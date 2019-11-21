@@ -48,7 +48,6 @@ class Response implements ResponseInterface
         $this->content = '';
         $sapiName = php_sapi_name();
         $this->setIsCli($sapiName == self::_CLI || $sapiName == self::_CLID);
-        return $this;
     }
 
     /**

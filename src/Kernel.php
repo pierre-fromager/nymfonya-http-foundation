@@ -18,12 +18,10 @@ class Kernel implements KernelInterface
       *
       * @param string $env
       * @param string $path
-      * @return Kernel
       */
     public function __construct(string $env, string $path)
     {
         $this->init($env, $path);
-        return $this;
     }
 
     /**

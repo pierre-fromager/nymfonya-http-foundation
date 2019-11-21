@@ -4,11 +4,11 @@ namespace Nymfonya\Component\Http\Interfaces;
 
 interface RouteInterface
 {
+
     /**
      * instanciate
      *
      * @param string $routeItem
-     * @return RouteInterface
      */
     public function __construct(string $routeItem);
 

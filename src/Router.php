@@ -58,7 +58,6 @@ class Router implements RouterInterface
         $this->params = [];
         $this->matchingRoute = '';
         $this->activeRoute = substr($this->request->getUri(), 1);
-        return $this;
     }
 
     /**

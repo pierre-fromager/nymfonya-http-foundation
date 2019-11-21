@@ -48,7 +48,6 @@ class Route implements RouteInterface
         } else {
             $this->expr = $routeItem;
         }
-        return $this;
     }
 
     /**

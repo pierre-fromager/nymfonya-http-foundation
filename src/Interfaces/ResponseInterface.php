@@ -15,6 +15,12 @@ interface ResponseInterface extends StatusInterface
     const _ERROR_MSG = 'errorMessage';
 
     /**
+     * instanciate
+     *
+     */
+    public function __construct();
+    
+    /**
      * returns header manager
      *
      * @return HeadersInterface

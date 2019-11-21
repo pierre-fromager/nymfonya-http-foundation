@@ -16,7 +16,6 @@ interface RouterInterface
      *
      * @param RoutesInterface $routes
      * @param RequestInterface $request
-     * @return RouterInterface
      */
     public function __construct(RoutesInterface $routes, RequestInterface $request);
 

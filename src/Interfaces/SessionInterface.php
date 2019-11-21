@@ -6,6 +6,11 @@ interface SessionInterface
 {
 
     /**
+     * instanciate
+     */
+    public function __construct();
+
+    /**
      * start a session with a session name
      *
      * @param string $sessionName
