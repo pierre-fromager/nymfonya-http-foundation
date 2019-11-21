@@ -61,7 +61,7 @@ class Middleware
      * @param  Closure $core
      * @return mixed
      */
-    public function peel(Container $object, Closure $core)
+    public function peel(Container $container, Closure $core)
     {
         $coreFunction = $this->createCoreFunction($core);
         $layers = array_reverse($this->layers);
@@ -70,7 +70,7 @@ class Middleware
             [$this, 'createLayer'],
             $coreFunction
         );
-        return $completeMiddleware($object);
+        return $completeMiddleware($container);
     }
 
     /**

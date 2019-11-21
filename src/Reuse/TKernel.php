@@ -216,7 +216,7 @@ trait TKernel
      * invoke action from a controller an return exec code.
      * for testing purpose return retValue if false
      *
-     * @param boolean $forceRetValue
+     * @param array $args
      * @return mixed
      */
     protected function invokeAction(...$args)

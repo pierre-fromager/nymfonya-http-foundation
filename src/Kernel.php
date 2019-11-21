@@ -52,9 +52,9 @@ class Kernel
      */
     public function run(array $groups = []): Kernel
     {
-        $routerGroups = ($groups)
-            ? $groups
-            : $this->router->compile();
+        $routerGroups = (empty($groups))
+            ? $this->router->compile()
+            : $groups;
         if ($routerGroups) {
             $this->setClassname($routerGroups);
             if (class_exists($this->className)) {
