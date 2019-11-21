@@ -32,6 +32,7 @@ class Route implements RouteInterface
      * instanciate
      *
      * @param string $routeItem
+     * @return Route
      */
     public function __construct(string $routeItem)
     {

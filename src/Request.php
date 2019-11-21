@@ -24,6 +24,8 @@ class Request extends Session implements RequestInterface
 
     /**
      * instanciate
+     *
+     * @return Request
      */
     public function __construct()
     {

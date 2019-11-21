@@ -11,6 +11,8 @@ class Cookie implements CookieInterface
 
     /**
      * instanciate
+     *
+     * @return Cookie
      */
     public function __construct()
     {

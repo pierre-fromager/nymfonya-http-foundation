@@ -38,6 +38,8 @@ class Response implements ResponseInterface
 
     /**
      * instanciate
+     *
+     * @return Response
      */
     public function __construct()
     {

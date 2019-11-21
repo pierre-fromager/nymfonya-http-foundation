@@ -16,6 +16,8 @@ class Headers implements HeadersInterface
 
     /**
      * instanciate
+     *
+     * @return Headers
      */
     public function __construct()
     {
@@ -26,6 +28,7 @@ class Headers implements HeadersInterface
      * add one header to header list and returns Headers instance
      *
      * @param string $key
+     * @param string $content
      * @return Headers
      */
     public function add(string $key, string $content): Headers
@@ -38,7 +41,7 @@ class Headers implements HeadersInterface
      * add headers from a header list as key value
      * and returns Headers instance
      *
-     * @param string $key
+     * @param array $headers
      * @return Headers
      */
     public function addMany(array $headers): Headers

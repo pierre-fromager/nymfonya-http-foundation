@@ -12,6 +12,8 @@ class Session extends Cookie implements SessionInterface
 
     /**
      * instanciate
+     *
+     * @return Session
      */
     public function __construct()
     {

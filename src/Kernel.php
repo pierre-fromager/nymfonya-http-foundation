@@ -15,6 +15,7 @@ class Kernel
     /**
      * instanciate
      *
+     * @return Kernel
      */
     public function __construct(string $env, string $path)
     {

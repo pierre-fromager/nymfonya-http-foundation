@@ -49,6 +49,7 @@ class Router implements RouterInterface
      *
      * @param RoutesInterface $routes
      * @param RequestInterface $request
+     * @return Router
      */
     public function __construct(RoutesInterface $routes, RequestInterface $request)
     {

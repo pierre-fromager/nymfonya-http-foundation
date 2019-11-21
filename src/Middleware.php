@@ -24,6 +24,7 @@ class Middleware
      * instanciate
      *
      * @param array $layers
+     * @return Middleware
      */
     public function __construct(array $layers = [])
     {
