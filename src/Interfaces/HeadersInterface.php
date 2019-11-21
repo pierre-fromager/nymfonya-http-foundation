@@ -17,6 +17,7 @@ interface HeadersInterface
     /**
      * instanciate
      *
+     * @return void
      */
     public function __construct();
 

@@ -7,6 +7,8 @@ interface SessionInterface
 
     /**
      * instanciate
+     *
+     * @return void
      */
     public function __construct();
 

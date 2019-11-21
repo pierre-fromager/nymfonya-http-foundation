@@ -17,6 +17,7 @@ interface ResponseInterface extends StatusInterface
     /**
      * instanciate
      *
+     * @return void
      */
     public function __construct();
     

@@ -29,6 +29,7 @@ interface RequestInterface
     /**
      * instanciate
      *
+     * @return void
      */
     public function __construct();
 
