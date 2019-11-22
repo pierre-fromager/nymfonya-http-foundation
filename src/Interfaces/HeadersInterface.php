@@ -15,12 +15,6 @@ interface HeadersInterface
     const HEADER_ACA_HEADERS = self::HEADER_ACA . 'Headers';
 
     /**
-     * instanciate
-     *
-     */
-    public function __construct();
-
-    /**
      * add one header formaly done with given key and content
      *
      * @return HeadersInterface

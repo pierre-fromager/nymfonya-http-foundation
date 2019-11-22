@@ -27,12 +27,6 @@ interface RequestInterface
     const APPLICATION_JSON = 'application/json';
 
     /**
-     * instanciate
-     *
-     */
-    public function __construct();
-
-    /**
      * returns http method
      *
      * @return string

@@ -6,12 +6,6 @@ interface CookieInterface
 {
 
     /**
-     * instanciate
-     *
-     */
-    public function __construct();
-
-    /**
      * get cookie string
      *
      * @param string $name
