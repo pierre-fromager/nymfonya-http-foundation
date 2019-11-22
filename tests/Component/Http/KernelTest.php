@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Component\Http;
+namespace Nymfonya\Component\HttpFoundation\Tests\Component\Http;
 
 use PHPUnit\Framework\TestCase as PFT;
 use Nymfonya\Component\Config;
@@ -19,7 +19,7 @@ class KernelTest extends PFT
     const TEST_ENABLE = true;
     const CONFIG_PATH = '/../../../tests/config/';
     const KERNEL_PATH =  '/../';
-    const KERNEL_NS = '\\Tests\\Controllers\\';
+    const KERNEL_NS = 'Nymfonya\\Component\\HttpFoundation\\Tests\\Controllers\\';
     const CTRL_ACT = ['config', 'help'];
     const CTRL_ACTIONS = [
         'swaggerdoc', 'false', 'preflight', 'help', 'account', 'keygen'

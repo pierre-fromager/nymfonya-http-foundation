@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Component\Http;
+namespace Nymfonya\Component\HttpFoundation\Tests\Component\Http;
 
 use PHPUnit\Framework\TestCase as PFT;
 use Nymfonya\Component\Http\Kernel;
 use Nymfonya\Component\Config;
 use Nymfonya\Component\Container;
 use Nymfonya\Component\Http\Middleware;
-use Tests\Middlewares\After;
+use Nymfonya\Component\HttpFoundation\Tests\Middlewares\After;
 
 /**
  * @covers \Nymfonya\Component\Http\Middleware::<public>

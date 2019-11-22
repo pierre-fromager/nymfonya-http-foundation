@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Component\Http;
+namespace Nymfonya\Component\HttpFoundation\Tests\Component\Http;
 
 use PHPUnit\Framework\TestCase as PFT;
 use Nymfonya\Component\Http\Request;

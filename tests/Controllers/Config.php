@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Nymfonya\Component\HttpFoundation\Tests\Controllers;
 
 use Nymfonya\Component\Container;
 use Nymfonya\Component\Http\Response;

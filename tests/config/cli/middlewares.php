@@ -1,6 +1,6 @@
 <?php
 
-use Tests\Middlewares\After;
+use Nymfonya\Component\HttpFoundation\Tests\Middlewares\After;
 
 return [
     After::class => [

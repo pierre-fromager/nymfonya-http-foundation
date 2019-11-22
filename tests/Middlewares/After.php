@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Middlewares;
+namespace Nymfonya\Component\HttpFoundation\Tests\Middlewares;
 
 use Nymfonya\Component\Http\Interfaces\Middleware\ILayer;
 use Nymfonya\Component\Http\Response;
