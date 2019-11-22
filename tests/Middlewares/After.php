@@ -2,12 +2,12 @@
 
 namespace Nymfonya\Component\HttpFoundation\Tests\Middlewares;
 
-use Nymfonya\Component\Http\Interfaces\Middleware\ILayer;
+use Nymfonya\Component\Http\Interfaces\MiddlewareInterface;
 use Nymfonya\Component\Http\Response;
 use Nymfonya\Component\Container;
 use Closure;
 
-class After implements ILayer
+class After implements MiddlewareInterface
 {
 
     const _SIGN = 'X-Middleware-After';

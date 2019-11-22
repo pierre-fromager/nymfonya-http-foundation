@@ -4,7 +4,7 @@ namespace Nymfonya\Component\Http;
 
 use Closure;
 use Nymfonya\Component\Container;
-use Nymfonya\Component\Http\Interfaces\Middleware\ILayer;
+use Nymfonya\Component\Http\Interfaces\MiddlewareInterface;
 
 /**
  * Nymfonya\Component\Http\Middleware
@@ -41,7 +41,7 @@ class Middleware
         if ($layers instanceof Middleware) {
             $layers = $layers->toArray();
         }
-        if ($layers instanceof ILayer) {
+        if ($layers instanceof MiddlewareInterface) {
             $layers = [$layers];
         }
         if (!is_array($layers)) {
@@ -102,10 +102,10 @@ class Middleware
      * we get the object from a previous layer and pass it inwards
      *
      * @param  Closure $nextLayer
-     * @param  ILayer $layer
+     * @param  MiddlewareInterface $layer
      * @return Closure
      */
-    protected function createLayer(Closure $nextLayer, ILayer $layer): Closure
+    protected function createLayer(Closure $nextLayer, MiddlewareInterface $layer): Closure
     {
         return function ($object) use ($nextLayer, $layer) {
             return $layer->peel($object, $nextLayer);
