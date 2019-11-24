@@ -195,7 +195,8 @@ trait TKernel
     protected function execute(...$args)
     {
         if ($this->isValidAction() && is_object($this->controller)) {
-            $resExec = $this->invokeAction($args);
+            $slugs = (isset($args[0])) ? $args[0] : [];
+            $resExec = $this->invokeAction($slugs);
             $this->error = ($resExec === false);
             $this->errorCode = ($this->error)
                 ? Response::HTTP_INTERNAL_SERVER_ERROR
