@@ -9,6 +9,10 @@ use Nymfonya\Component\Http\Request;
 use Nymfonya\Component\Http\Response;
 use Nymfonya\Component\Http\Router;
 use Nymfonya\Component\Http\Kernel;
+use Nymfonya\Component\Http\Interfaces\KernelEventsInterface;
+use Nymfonya\Component\Http\Interfaces\KernelInterface;
+use Nymfonya\Component\Pubsub\Dispatcher;
+use Nymfonya\Component\Pubsub\Event;
 
 /**
  * @covers \Nymfonya\Component\Http\Kernel::<public>::<public>
@@ -53,7 +57,6 @@ class KernelTest extends PFT
             __DIR__ . self::KERNEL_PATH
         );
         $this->instance->setNameSpace(self::KERNEL_NS);
-        //var_dump($this->instance->get)
     }
 
     /**
@@ -126,8 +129,7 @@ class KernelTest extends PFT
      */
     public function testSend()
     {
-        $this->setOutputCallback(function () {
-        });
+        $this->setOutputCallback(function () { });
         $kr = $this->instance->run();
         $this->assertTrue($kr instanceof Kernel);
         $ks = $kr->send();
@@ -189,6 +191,29 @@ class KernelTest extends PFT
             []
         );
         $this->assertTrue($gc instanceof Container);
+    }
+
+    /**
+     * testSetDispatcher
+     * @covers Nymfonya\Component\Http\Kernel::setDispatcher
+     */
+    public function testSetDispatcher()
+    {
+        $sdi0 = $this->instance->setDispatcher();
+        $this->assertTrue($sdi0 instanceof KernelInterface);
+        $sdi1 = $this->instance->setDispatcher(new Dispatcher());
+        $this->assertTrue($sdi1 instanceof KernelInterface);
+    }
+
+    /**
+     * testGetBundleClassname
+     * @covers Nymfonya\Component\Http\Kernel::getBundleClassname
+     */
+    public function testGetBundleClassname()
+    {
+        $gbc = $this->instance->getBundleClassname();
+        $this->assertTrue(is_string($gbc));
+        $this->assertNotEmpty($gbc);
     }
 
     /**

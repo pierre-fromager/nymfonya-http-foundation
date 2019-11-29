@@ -5,6 +5,7 @@ namespace Nymfonya\Component\Http\Reuse;
 use Monolog\Logger;
 use Nymfonya\Component\Config;
 use Nymfonya\Component\Container;
+use Nymfonya\Component\Pubsub\Dispatcher;
 use Nymfonya\Component\Http\Kernel;
 use Nymfonya\Component\Http\Middleware;
 use Nymfonya\Component\Http\Request;
@@ -70,6 +71,13 @@ trait TKernel
      * @var Router
      */
     protected $router;
+
+    /**
+     * app dispatcher
+     *
+     * @var Dispatcher
+     */
+    protected $dispatcher;
 
     /**
      * ctrl class name
@@ -177,6 +185,7 @@ trait TKernel
         $this->setPath($path);
         $this->setConfig();
         $this->setContainer();
+        $this->setDispatcher();
         $this->setRequest();
         $this->setResponse();
         $this->setLogger();
@@ -523,6 +532,8 @@ trait TKernel
     {
         return $this->logger;
     }
+
+
 
     /**
      * set app root path

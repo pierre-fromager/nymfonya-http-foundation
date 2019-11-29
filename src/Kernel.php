@@ -5,6 +5,9 @@ namespace Nymfonya\Component\Http;
 use Nymfonya\Component\Http\Headers;
 use Nymfonya\Component\Http\Interfaces\KernelInterface;
 use Nymfonya\Component\Http\Response;
+use Nymfonya\Component\Http\Interfaces\KernelEventsInterface;
+use Nymfonya\Component\Pubsub\Dispatcher;
+use Nymfonya\Component\Pubsub\Event;
 
 class Kernel implements KernelInterface
 {
@@ -13,15 +16,22 @@ class Kernel implements KernelInterface
 
     use \Nymfonya\Component\Http\Reuse\TKernel;
 
-     /**
-      * instanciate
-      *
-      * @param string $env
-      * @param string $path
-      */
+    /**
+     * instanciate
+     *
+     * @param string $env
+     * @param string $path
+     */
     public function __construct(string $env, string $path)
     {
         $this->init($env, $path);
+        $this->dispatcher->publish(
+            new Event(
+                get_class($this), 
+                KernelEventsInterface::EVENT_KERNEL_BOOT,
+                $this
+            )
+        );
     }
 
     /**
@@ -41,9 +51,25 @@ class Kernel implements KernelInterface
      *
      * @return string
      */
-    public function getBundleClassname():string
+    public function getBundleClassname(): string
     {
         return get_called_class();
+    }
+
+    /**
+     * set pubsub dispatcher
+     *
+     * @param Dispatcher $dispatcher
+     * @return KernelInterface
+     */
+    public function setDispatcher(Dispatcher $dispatcher = null): KernelInterface
+    {
+        if ($dispatcher instanceof Dispatcher) {
+            $this->dispatcher = $dispatcher;
+            return $this;
+        }
+        $this->dispatcher = new Dispatcher();
+        return $this;
     }
 
     /**

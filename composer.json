@@ -16,14 +16,14 @@
             "homepage": "https://github.com/pierre-fromager"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "type": "library",
-    "version": "1.0.2",
     "require": {
         "php": ">=7.0.0",
-        "pier-infor/nymfonya-config": "dev-master",
-        "pier-infor/nymfonya-container": "dev-master",
+        "pier-infor/nymfonya-config": "~1.0.2",
+        "pier-infor/nymfonya-container": "~1.0.3",
+        "pier-infor/nymfonya-pubsub": "~1.0.0",
         "monolog/monolog": "^1.25"
     },
     "require-dev": {
