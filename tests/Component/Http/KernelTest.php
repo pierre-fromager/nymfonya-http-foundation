@@ -9,10 +9,8 @@ use Nymfonya\Component\Http\Request;
 use Nymfonya\Component\Http\Response;
 use Nymfonya\Component\Http\Router;
 use Nymfonya\Component\Http\Kernel;
-use Nymfonya\Component\Http\Interfaces\KernelEventsInterface;
 use Nymfonya\Component\Http\Interfaces\KernelInterface;
 use Nymfonya\Component\Pubsub\Dispatcher;
-use Nymfonya\Component\Pubsub\Event;
 
 /**
  * @covers \Nymfonya\Component\Http\Kernel::<public>::<public>
@@ -805,12 +803,12 @@ class KernelTest extends PFT
     /**
      * testShutdown
      * @covers Nymfonya\Component\Http\Kernel::shutdown
-     * @expectedException Exception
-     * @expectedExceptionCode 10
      * @runInSeparateProcess
      */
     public function testShutdown()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionCode(10);
         $this->instance->shutdown(10);
         $this->assertTrue($this->instance instanceof Kernel);
     }
