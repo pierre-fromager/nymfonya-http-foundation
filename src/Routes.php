@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nymfonya\Component\Http;
 
 use Nymfonya\Component\Http\Interfaces\RoutesInterface;
@@ -92,9 +94,21 @@ class Routes implements RoutesInterface
         $count = count($this->routes);
         for ($c = 0; $c < $count; $c++) {
             $route = $this->routes[$c]->getExpr();
-            if (@preg_match($route, null) === false) {
+            if ($this->isInvalidRegexp($route)) {
                 throw new \Exception('Route invalid expr ' . $route);
             }
         }
+    }
+
+     /**
+      * return true if regexp is invalid
+      *
+      * @param string $regExp
+      * @return boolean
+      */
+    protected function isInvalidRegexp(string $regExp): bool
+    {
+        @preg_match($regExp, '');
+        return (preg_last_error() != PREG_NO_ERROR);
     }
 }

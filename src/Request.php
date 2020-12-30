@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nymfonya\Component\Http;
 
 use Nymfonya\Component\Http\Interfaces\HeadersInterface;
@@ -191,8 +193,8 @@ class Request extends Session implements RequestInterface
      */
     protected function getArgs(): string
     {
-        return isset($this->server[self::_ARGV][1])
-            ? $this->server[self::_ARGV][1]
+        return (true === isset($this->server[self::_ARGV][1]))
+            ? (string) $this->server[self::_ARGV][1]
             : '';
     }
 
@@ -204,8 +206,8 @@ class Request extends Session implements RequestInterface
      */
     protected function getServer(string $key): string
     {
-        return (isset($this->server[$key]))
-            ? $this->server[$key]
+        return (true === isset($this->server[$key]))
+            ? (string) $this->server[$key]
             : '';
     }
 
@@ -306,6 +308,9 @@ class Request extends Session implements RequestInterface
         $params = $this->getInput();
         if ($this->isCli) {
             $queryString = parse_url($this->getArgs(), PHP_URL_QUERY);
+            if (is_null($queryString)) {
+                return [];
+            }
             parse_str($queryString, $queryParams);
             $params = array_merge($params, $queryParams);
         }

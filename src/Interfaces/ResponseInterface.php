@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nymfonya\Component\Http\Interfaces;
 
 use Nymfonya\Component\Http\Interfaces\HeadersInterface;

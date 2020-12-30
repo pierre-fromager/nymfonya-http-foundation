@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nymfonya\Component\Http;
 
 use Nymfonya\Component\Http\Headers;
@@ -27,7 +29,7 @@ class Kernel implements KernelInterface
         $this->init($env, $path);
         $this->dispatcher->publish(
             new Event(
-                get_class($this), 
+                get_class($this),
                 KernelEventsInterface::EVENT_KERNEL_BOOT,
                 $this
             )

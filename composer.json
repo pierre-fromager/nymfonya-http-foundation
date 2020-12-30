@@ -20,18 +20,20 @@
     "prefer-stable": true,
     "type": "library",
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.3.10",
         "pier-infor/nymfonya-config": "~1.0.2",
         "pier-infor/nymfonya-container": "~1.0.3",
         "pier-infor/nymfonya-pubsub": "~1.0.0",
-        "monolog/monolog": "^1.25"
+        "monolog/monolog": "^1.25",
+        "theseer/phpdox": "^0.12.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5",
+        "phpunit/phpunit": "^7.5",
         "squizlabs/php_codesniffer": "*",
-        "friendsofphp/php-cs-fixer": "^2.13",
-        "phploc/phploc": "^4.0",
-        "phpmd/phpmd": "@stable"
+        "friendsofphp/php-cs-fixer": "^2.17",
+        "phploc/phploc": "^5.0",
+        "phpmd/phpmd": "@stable",
+        "phan/phan": "3.x"
     },
     "autoload": {
         "psr-4": {
@@ -53,29 +55,26 @@
         "process-timeout": 0
     },
     "scripts": {
-        "checklint": [
-            "phpcs -e --standard=PSR2 --warning-severity=10 --extensions=php src/* tests/*"
+        "up": [
+            "php /usr/bin/composer update --with-all-dependencies"
         ],
         "lint": [
-            "phpcbf --standard=PSR2 --warning-severity=10 --extensions=php src/* tests/*"
+            "phpcbf --standard=PSR12 --warning-severity=10 --extensions=php src/* tests/*"
         ],
         "cq": [
-            "phploc -vvv --ansi src/*"
+            "phploc -vvv --ansi src/* --log-xml ./build/logs/phploc.xml"
         ],
         "md": [
             "phpmd ./src text codesize,unusedcode,naming"
         ],
-        "start": [
-            "php -S localhost:8888 src/index.php"
-        ],
-        "cov": [
-            "phpunit --coverage-html='./coverage'"
-        ],
-        "covdbg": [
-            "phpdbg -qrr ./vendor/bin/phpunit --coverage-html='./coverage'"
-        ],
         "test": [
-            "phpunit --verbose --testsuite all"
+            "phpdbg -qrr ./vendor/bin/phpunit"
+        ],
+        "doc": [
+            "php ./vendor/bin/phpdox"
+        ],
+        "phan": [
+            "php ./vendor/bin/phan"
         ]
     }
 }

@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nymfonya\Component\Http\Interfaces;
 
-use \Closure;
+use Closure;
 use Nymfonya\Component\Container;
 
 interface MiddlewareInterface

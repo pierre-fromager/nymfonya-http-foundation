@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nymfonya\Component\Http\Reuse;
 
 use Monolog\Logger;
@@ -11,7 +13,7 @@ use Nymfonya\Component\Http\Middleware;
 use Nymfonya\Component\Http\Request;
 use Nymfonya\Component\Http\Response;
 use Nymfonya\Component\Http\Router;
-use \ReflectionClass;
+use ReflectionClass;
 
 trait TKernel
 {
@@ -255,7 +257,7 @@ trait TKernel
         );
         $middlwaresClasses = array_keys($middlwaresConfig);
         foreach ($middlwaresClasses as $className) {
-            $this->middlewares[$className] = new $className;
+            $this->middlewares[$className] = new $className();
         }
         (new Middleware())->layer($this->middlewares)->peel(
             $this->container,
