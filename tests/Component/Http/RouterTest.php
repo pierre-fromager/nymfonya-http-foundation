@@ -131,4 +131,57 @@ class RouterTest extends PFT
         $comp1 = $this->instance->compile();
         $this->assertTrue(is_array($comp1));
     }
+
+    /**
+     * testGetParams
+     * @covers Nymfonya\Component\Http\Router::compile
+     * @covers Nymfonya\Component\Http\Router::getParams
+     * @dataProvider routesGetParamsDataProvider
+     */
+    public function testGetParams($uri, $rex, $expectedParams)
+    {
+        $mockRequest = $this->getMockBuilder(Request::class)
+            ->disableOriginalConstructor()
+            ->disableOriginalClone()
+            ->disableArgumentCloning()
+            ->disallowMockingUnknownTypes()
+            ->getMock();
+        $mockRequest->method('getUri')->willReturn($uri);
+        $routes = new Routes([$rex]);
+        $router = new Router($routes, $mockRequest);
+        $router->compile();
+        $this->assertEquals($router->getParams(), $expectedParams);
+    }
+
+    /**
+     * routesGetParamsDataProvider
+     * @return Array
+     */
+    public function routesGetParamsDataProvider()
+    {
+        $uri = '/api/v1/';
+        return [
+
+            'matchMultipleParams' => [
+                $uri . 'auth/login/username/test/password/pwd',
+                '/^(api\/v1\/auth)\/(.*?)(\/.*)/',
+                ['username' => 'test', 'password' => 'pwd']
+            ],
+            'notRouterJobButRequestShouldGetParams' => [
+                $uri . 'auth/info?id=1',
+                '/^(api\/v1\/auth)\/(.*?)(\?.*)/',
+                []
+            ],
+            'matchClassic' => [
+                $uri . 'auth/info/id/1',
+                '/^(api\/v1\/auth)\/(.*?)(\/.*)/',
+                ['id' => 1]
+            ],
+            'matchSlug' => [
+                $uri . 'auth/info/10',
+                'GET;/^(api\/v1\/auth\/info)\/(\d+)$/;,id',
+                ['id' => 10]
+            ],
+        ];
+    }
 }

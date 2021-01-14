@@ -60,7 +60,6 @@ class Router implements RouterInterface
         $this->params = [];
         $this->matchingRoute = '';
         $this->activeRoute = (string) substr($this->request->getUri(), 1);
-        //var_dump($this->request->getUri(),$this->activeRoute);
     }
 
     /**
@@ -88,9 +87,6 @@ class Router implements RouterInterface
             $route = $routes[$i];
             $matches = [];
             $pattern = $route->getExpr();
-            //die;
-            //var_dump($pattern, $this->activeRoute, $matches);
-            //die;
             $match = preg_match($pattern, $this->activeRoute, $matches);
             if ($match) {
                 $this->matchingRoute = $pattern;
@@ -123,10 +119,20 @@ class Router implements RouterInterface
     {
         $slugs = $route->getSlugs();
         $slugCount = count($slugs);
-        for ($c = 0; $c < $slugCount; $c++) {
-            $slug = $slugs[$c];
-            if (false === empty($slug)) {
-                $this->params[$slug] = $matches[$c];
+        if ($slugCount > 0) {
+            for ($c = 0; $c < $slugCount; $c++) {
+                $slug = $slugs[$c];
+                if (false === empty($slug)) {
+                    $this->params[$slug] = $matches[$c];
+                }
+            }
+        } else {
+            if (isset($matches[2])) {
+                $parms = explode('/', $matches[2]);
+                $this->params = [];
+                while (false !== $key = next($parms)) {
+                    $this->params[$key] = next($parms);
+                }
             }
         }
         return $this;
