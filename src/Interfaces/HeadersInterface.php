@@ -15,6 +15,8 @@ interface HeadersInterface
     const HEADER_ACA_CREDENTIALS = self::HEADER_ACA . 'Credentials';
     const HEADER_ACA_METHODS = self::HEADER_ACA . 'Methods';
     const HEADER_ACA_HEADERS = self::HEADER_ACA . 'Headers';
+    const REDIRECT_AUTHORIZATION = 'REDIRECT_HTTP_AUTHORIZATION';
+    const AUTHORIZATION = 'Authorization';
 
     /**
      * add one header formaly done with given key and content

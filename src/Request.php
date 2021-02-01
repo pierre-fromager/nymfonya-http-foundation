@@ -180,9 +180,18 @@ class Request extends Session implements RequestInterface
      */
     protected function setHeaders(): RequestInterface
     {
-        $this->headerManager->addMany(
-            $this->isCli ? [] : getallheaders()
-        );
+        if ($this->isCli) {
+            $this->headerManager->addMany([]);
+        } else {
+            $headers = getallheaders();
+            $auth = $this->getServer(
+                HeadersInterface::REDIRECT_AUTHORIZATION
+            );
+            if (!empty($auth)) {
+                $headers[HeadersInterface::AUTHORIZATION] = $auth;
+            }
+            $this->headerManager->addMany($headers);
+        }
         return $this;
     }
 
