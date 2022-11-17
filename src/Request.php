@@ -357,6 +357,9 @@ class Request extends Session implements RequestInterface
             $this->params = ($this->isJsonContentType())
                 ? $this->getInput()
                 : $_POST;
+            if (empty($this->params) && !empty($_REQUEST)) {
+                $this->params = $_REQUEST;
+            }
         } elseif ($this->method === self::METHOD_TRACE) {
             $this->params = $this->getCliParams();
         } else {
