@@ -16,24 +16,22 @@
             "homepage": "https://github.com/pierre-fromager"
         }
     ],
-    "minimum-stability": "stable",
-    "prefer-stable": true,
+    "minimum-stability": "dev",
     "type": "library",
     "require": {
-        "php": ">=7.3.10",
-        "pier-infor/nymfonya-config": "~1.0.2",
-        "pier-infor/nymfonya-container": "~1.0.3",
-        "pier-infor/nymfonya-pubsub": "~1.0.0",
-        "monolog/monolog": "^1.25"        
+        "php": ">=8.4.0",
+        "pier-infor/nymfonya-config": "*",
+        "pier-infor/nymfonya-container": "*",
+        "pier-infor/nymfonya-pubsub": "*",
+        "monolog/monolog": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
+        "phpunit/phpunit": "^10.5",
         "squizlabs/php_codesniffer": "*",
         "friendsofphp/php-cs-fixer": "^2.17",
-        "phploc/phploc": "^5.0",
+        "phploc/phploc": "^8.0",
         "phpmd/phpmd": "@stable",
-        "phan/phan": "3.x",
-        "theseer/phpdox": "^0.12.0"
+        "phan/phan": "3.x"
     },
     "autoload": {
         "psr-4": {
@@ -68,7 +66,7 @@
             "phpmd ./src text codesize,unusedcode,naming"
         ],
         "test": [
-            "phpdbg -qrr ./vendor/bin/phpunit"
+            "phpdbg -qrr ./vendor/bin/phpunit --no-coverage"
         ],
         "doc": [
             "php ./vendor/bin/phpdox"

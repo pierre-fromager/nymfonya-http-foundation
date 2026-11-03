@@ -51,7 +51,6 @@ class CookieTest extends PFT
     {
         $class = new \ReflectionClass(Cookie::class);
         $method = $class->getMethod($name);
-        $method->setAccessible(true);
         unset($class);
         return $method;
     }
@@ -77,7 +76,6 @@ class CookieTest extends PFT
     /**
      * testSetCookie
      * @covers Nymfonya\Component\Http\Cookie::setCookie
-     * @runInSeparateProcess
      */
     public function testSetCookie()
     {
@@ -92,7 +90,6 @@ class CookieTest extends PFT
     /**
      * testRefreshCookie
      * @covers Nymfonya\Component\Http\Cookie::refreshCookie
-     * @runInSeparateProcess
      */
     public function testRefreshCookie()
     {

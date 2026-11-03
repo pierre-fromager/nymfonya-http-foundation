@@ -52,7 +52,6 @@ class RequestTest extends PFT
     {
         $class = new \ReflectionClass(Request::class);
         $method = $class->getMethod($name);
-        $method->setAccessible(true);
         unset($class);
         return $method;
     }
@@ -70,7 +69,7 @@ class RequestTest extends PFT
      * constantsProvider
      * @return Array
      */
-    public function constantsProvider()
+    public static function constantsProvider()
     {
         return [
             ['_ARGV'],
@@ -337,7 +336,6 @@ class RequestTest extends PFT
     /**
      * testGetUri
      * @covers Nymfonya\Component\Http\Request::getUri
-     * @runInSeparateProcess
      */
     public function testGetUri()
     {
@@ -413,7 +411,6 @@ class RequestTest extends PFT
      * testSetIsCli
      * @covers Nymfonya\Component\Http\Request::setIsCli
      * @covers Nymfonya\Component\Http\Request::isCli
-     * @runInSeparateProcess
      */
     public function testSetIsCli()
     {

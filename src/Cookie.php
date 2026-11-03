@@ -28,7 +28,7 @@ class Cookie implements CookieInterface
      */
     public function getCookie(string $name): string
     {
-        return (isset($this->cookie[$name])) ? $this->cookie[$name] : '';
+        return $this->cookie[$name] ?? '';
     }
 
     /**
@@ -41,7 +41,7 @@ class Cookie implements CookieInterface
      */
     public function setCookie(string $name, string $value, int $ttl): CookieInterface
     {
-        setcookie($name, $value, time() + $ttl);
+        setcookie($name, $value, ['expires' => time() + $ttl]);
         return $this->refreshCookie();
     }
 

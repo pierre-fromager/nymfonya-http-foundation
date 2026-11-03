@@ -52,7 +52,6 @@ class ResponseTest extends PFT
     {
         $class = new \ReflectionClass(Response::class);
         $method = $class->getMethod($name);
-        $method->setAccessible(true);
         unset($class);
         return $method;
     }
@@ -70,7 +69,7 @@ class ResponseTest extends PFT
      * constantsProvider
      * @return Array
      */
-    public function constantsProvider()
+    public static function constantsProvider()
     {
         return [
             ['_CLI'],
@@ -152,12 +151,9 @@ class ResponseTest extends PFT
      * testSend
      * @covers Nymfonya\Component\Http\Response::send
      * @covers Nymfonya\Component\Http\Response::setIsCli
-     * @runInSeparateProcess
      */
     public function testSend()
     {
-        $this->setOutputCallback(function () {
-        });
         $this->assertTrue(
             $this->instance->send() instanceof Response
         );

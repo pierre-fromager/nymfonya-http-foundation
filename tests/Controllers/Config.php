@@ -13,11 +13,11 @@ use Nymfonya\Component\Http\Request;
 final class Config
 {
 
-    const KEY_LENGTH = 64;
-    const _TITLE = 'title';
-    const _ACTION = 'action';
-    const _DATAS = 'datas';
-    const _HOWTO = 'howto';
+    const int KEY_LENGTH = 64;
+    const string _TITLE = 'title';
+    const string _ACTION = 'action';
+    const string _DATAS = 'datas';
+    const string _HOWTO = 'howto';
 
     /**
      * response
@@ -124,7 +124,7 @@ final class Config
      */
     final public function swaggerdoc(): Config
     {
-        $path = dirname(__FILE__);
+        $path = __DIR__;
         $controllerPath = '/Api/V1/Restful.php';
         $openapi = \OpenApi\scan($path . $controllerPath);
         $this->response

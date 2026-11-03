@@ -40,12 +40,8 @@ class Route implements RouteInterface
         $this->method = 'GET';
         $this->expr = '/^(*.)$/';
         $this->slugs = [];
-        if (strpos($routeItem, ';') !== false) {
-            list(
-                $this->method,
-                $this->expr,
-                $slugs
-            ) = explode(';', $routeItem);
+        if (str_contains($routeItem, ';')) {
+            [$this->method, $this->expr, $slugs] = explode(';', $routeItem);
             $this->slugs = $this->parsedSlugs($slugs);
         } else {
             $this->expr = $routeItem;

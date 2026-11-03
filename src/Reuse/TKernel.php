@@ -206,7 +206,7 @@ trait TKernel
     protected function execute(...$args)
     {
         if ($this->isValidAction() && is_object($this->controller)) {
-            $slugs = (isset($args[0])) ? $args[0] : [];
+            $slugs = $args[0] ?? [];
             $resExec = $this->invokeAction($slugs);
             $this->error = ($resExec === false);
             $this->errorCode = ($this->error)
@@ -259,7 +259,7 @@ trait TKernel
         foreach ($middlwaresClasses as $className) {
             $this->middlewares[$className] = new $className();
         }
-        (new Middleware())->layer($this->middlewares)->peel(
+        new Middleware()->layer($this->middlewares)->peel(
             $this->container,
             function ($container) {
                 $this->execute($this->router->getParams());
@@ -352,9 +352,7 @@ trait TKernel
     protected function setActions()
     {
         $methods = $this->getFinalMethods();
-        $methodsName = array_map(function ($method) {
-            return $method->name;
-        }, $methods);
+        $methodsName = array_map(fn($method) => $method->name, $methods);
         $this->actions = array_merge($methodsName, ['preflight']);
     }
 
@@ -467,7 +465,7 @@ trait TKernel
         $this->className = $this->spacename
             . implode(
                 '\\',
-                array_map('ucfirst', explode('/', $routerGroups[0]))
+                array_map(ucfirst(...), explode('/', $routerGroups[0]))
             );
     }
 

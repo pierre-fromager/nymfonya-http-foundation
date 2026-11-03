@@ -76,7 +76,6 @@ class KernelTest extends PFT
     {
         $class = new \ReflectionClass(Kernel::class);
         $method = $class->getMethod($name);
-        $method->setAccessible(true);
         unset($class);
         return $method;
     }
@@ -123,12 +122,9 @@ class KernelTest extends PFT
      * @covers Nymfonya\Component\Http\Kernel::send
      * @covers Nymfonya\Component\Http\Kernel::setError
      * @covers Nymfonya\Component\Http\Kernel::getError
-     * @runInSeparateProcess
      */
     public function testSend()
     {
-        $this->setOutputCallback(function () {
-        });
         $kr = $this->instance->run();
         $this->assertTrue($kr instanceof Kernel);
         $ks = $kr->send();
@@ -803,7 +799,6 @@ class KernelTest extends PFT
     /**
      * testShutdown
      * @covers Nymfonya\Component\Http\Kernel::shutdown
-     * @runInSeparateProcess
      */
     public function testShutdown()
     {

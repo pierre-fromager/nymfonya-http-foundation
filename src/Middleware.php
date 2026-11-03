@@ -48,7 +48,7 @@ class Middleware
         }
         if (!is_array($layers)) {
             throw new \InvalidArgumentException(
-                get_class($layers) . self::$excMsg
+                $layers::class . self::$excMsg
             );
         }
         return new static(array_merge($this->layers, $layers));
@@ -68,7 +68,7 @@ class Middleware
         $layers = array_reverse($this->layers);
         $completeMiddleware = array_reduce(
             $layers,
-            [$this, 'createLayer'],
+            $this->createLayer(...),
             $coreFunction
         );
         return $completeMiddleware($container);
@@ -94,9 +94,7 @@ class Middleware
      */
     protected function createCoreFunction(Closure $core): Closure
     {
-        return function ($object) use ($core) {
-            return $core($object);
-        };
+        return fn($object) => $core($object);
     }
 
     /**
@@ -109,8 +107,6 @@ class Middleware
      */
     protected function createLayer(Closure $nextLayer, MiddlewareInterface $layer): Closure
     {
-        return function ($object) use ($nextLayer, $layer) {
-            return $layer->peel($object, $nextLayer);
-        };
+        return fn($object) => $layer->peel($object, $nextLayer);
     }
 }

@@ -26,13 +26,6 @@ class Router implements RouterInterface
     private $routes;
 
     /**
-     * request
-     *
-     * @var RequestInterface
-     */
-    private $request = null;
-
-    /**
      * route params
      *
      * @var array
@@ -52,10 +45,12 @@ class Router implements RouterInterface
      * @param RoutesInterface $routes
      * @param RequestInterface $request
      */
-    public function __construct(RoutesInterface $routes, RequestInterface $request)
+    public function __construct(RoutesInterface $routes, /**
+     * request
+     */
+    private readonly RequestInterface $request)
     {
         $this->routes = $routes->get();
-        $this->request = $request;
         $this->activeRoute = '';
         $this->params = [];
         $this->matchingRoute = '';

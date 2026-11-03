@@ -80,7 +80,6 @@ class RouteTest extends PFT
     {
         $class = new \ReflectionClass(Route::class);
         $method = $class->getMethod($name);
-        $method->setAccessible(true);
         unset($class);
         return $method;
     }

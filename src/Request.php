@@ -83,9 +83,7 @@ class Request extends Session implements RequestInterface
      */
     public function getParam(string $key): string
     {
-        return isset($this->params[$key])
-            ? $this->params[$key]
-            : '';
+        return $this->params[$key] ?? '';
     }
 
     /**
@@ -158,9 +156,7 @@ class Request extends Session implements RequestInterface
     public function getAcceptEncoding(): string
     {
         $headers = $this->getHeaders();
-        return isset($headers[HeadersInterface::ACCEPT_ENCODING])
-            ? $headers[HeadersInterface::ACCEPT_ENCODING]
-            : '';
+        return $headers[HeadersInterface::ACCEPT_ENCODING] ?? '';
     }
 
     /**
@@ -227,10 +223,10 @@ class Request extends Session implements RequestInterface
      */
     protected function isJsonContentType(): bool
     {
-        return strpos(
+        return str_contains(
             strtolower($this->contentType),
             self::APPLICATION_JSON
-        ) !== false;
+        );
     }
 
     /**

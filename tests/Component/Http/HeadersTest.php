@@ -51,7 +51,6 @@ class HeadersTest extends PFT
     {
         $class = new \ReflectionClass(Headers::class);
         $method = $class->getMethod($name);
-        $method->setAccessible(true);
         unset($class);
         return $method;
     }
@@ -71,7 +70,7 @@ class HeadersTest extends PFT
      * constantsProvider
      * @return Array
      */
-    public function constantsProvider()
+    public static function constantsProvider()
     {
         return [
             ['CONTENT_TYPE'],
@@ -149,7 +148,6 @@ class HeadersTest extends PFT
      * testSend
      * @covers Nymfonya\Component\Http\Headers::addMany
      * @covers Nymfonya\Component\Http\Headers::send
-     * @runInSeparateProcess
      */
     public function testSend()
     {

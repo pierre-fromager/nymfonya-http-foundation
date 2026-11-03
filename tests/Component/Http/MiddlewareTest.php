@@ -83,7 +83,6 @@ class MiddlewareTest extends PFT
     {
         $class = new \ReflectionClass(Middleware::class);
         $method = $class->getMethod($name);
-        $method->setAccessible(true);
         unset($class);
         return $method;
     }
@@ -129,9 +128,7 @@ class MiddlewareTest extends PFT
     {
         $r = $this->instance->peel(
             $this->container,
-            function ($v) {
-                return time();
-            }
+            fn($v) => time()
         );
         $this->assertTrue(is_int($r));
     }
@@ -153,9 +150,7 @@ class MiddlewareTest extends PFT
     {
         $value = self::getMethod('createCoreFunction')->invokeArgs(
             $this->instance,
-            [function ($v) {
-                return $v + 1;
-            }]
+            [fn($v) => $v + 1]
         );
         $this->assertTrue($value instanceof \Closure);
         $this->assertTrue(is_callable($value));
@@ -173,9 +168,7 @@ class MiddlewareTest extends PFT
         $value = self::getMethod('createLayer')->invokeArgs(
             $this->instance,
             [
-                function ($v) {
-                    return $v;
-                },
+                fn($v) => $v,
                 new After($this->container)
             ]
         );

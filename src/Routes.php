@@ -61,9 +61,7 @@ class Routes implements RoutesInterface
     public function getExpr(): array
     {
         $patterns = array_map(
-            function (Route $i) {
-                return $i->getExpr();
-            },
+            fn(Route $i) => $i->getExpr(),
             $this->routes
         );
         return $patterns;

@@ -157,7 +157,7 @@ class RouterTest extends PFT
      * routesGetParamsDataProvider
      * @return Array
      */
-    public function routesGetParamsDataProvider()
+    public static function routesGetParamsDataProvider()
     {
         $uri = '/api/v1/';
         return [

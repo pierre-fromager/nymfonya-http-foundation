@@ -51,7 +51,6 @@ class SessionTest extends PFT
     {
         $class = new \ReflectionClass(Routes::class);
         $method = $class->getMethod($name);
-        $method->setAccessible(true);
         unset($class);
         return $method;
     }

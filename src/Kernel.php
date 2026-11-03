@@ -29,7 +29,7 @@ class Kernel implements KernelInterface
         $this->init($env, $path);
         $this->dispatcher->publish(
             new Event(
-                get_class($this),
+                static::class,
                 KernelEventsInterface::EVENT_KERNEL_BOOT,
                 $this
             )
@@ -55,7 +55,7 @@ class Kernel implements KernelInterface
      */
     public function getBundleClassname(): string
     {
-        return get_called_class();
+        return static::class;
     }
 
     /**
@@ -64,7 +64,7 @@ class Kernel implements KernelInterface
      * @param Dispatcher $dispatcher
      * @return KernelInterface
      */
-    public function setDispatcher(Dispatcher $dispatcher = null): KernelInterface
+    public function setDispatcher(?Dispatcher $dispatcher = null): KernelInterface
     {
         if ($dispatcher instanceof Dispatcher) {
             $this->dispatcher = $dispatcher;
@@ -146,7 +146,7 @@ class Kernel implements KernelInterface
      *
      * @return void
      */
-    public function shutdown(int $code = 0)
+    public function shutdown(int $code = 0): never
     {
         throw new \Exception('shutdown', $code);
     }

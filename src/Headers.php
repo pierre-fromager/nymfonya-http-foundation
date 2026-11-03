@@ -87,9 +87,7 @@ class Headers implements HeadersInterface
     public function getRaw(): array
     {
         return array_map(
-            function ($key, $val) {
-                return $key . ': ' . $val;
-            },
+            fn($key, $val) => $key . ': ' . $val,
             array_keys($this->headers),
             $this->headers
         );
